@@ -1,114 +1,102 @@
-📢 Use this project, [contribute](https://github.com/{OrganizationName}/{AppName}) to it or open issues to help evolve it using [Store Discussion](https://github.com/vtex-apps/store-discussion).
-
-# APP NAME
-
-<!-- DOCS-IGNORE:start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- DOCS-IGNORE:end -->
-
-Under the app's name, you should explain the topic, giving a **brief description** of its **functionality** in a store when installed.
-
-Next, **add media** (either an image of a GIF) with the rendered components, so that users can better understand how the app works in practice. 
-
-![Media Placeholder](https://user-images.githubusercontent.com/52087100/71204177-42ca4f80-227e-11ea-89e6-e92e65370c69.png)
-
-## Configuration 
-
-In this section, you first must **add the primary instructions** that will allow users to use the app's blocks in their store, such as:
-
-1. Adding the app as a theme dependency in the `manifest.json` file;
-2. Declaring the app's main block in a given theme template or inside another block from the theme.
-
-Remember to add a table with all blocks exported by the app and their descriptions. You can verify an example of it on the [Search Result documentation](https://vtex.io/docs/components/all/vtex.search-result@3.56.1/). 
-
-Next, add the **props table** containing your block's props. 
-
-If the app exports more than one block, create several tables - one for each block. For example:
-
-### `block-1` props
-
-| Prop name    | Type            | Description    | Default value                                                                                                                               |
-| ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | 
-| `XXXXX`      | `XXXXXX`       | XXXXXXXX         | `XXXXXX`        |
+#  QUICK ORDER
+El componente quick-order permite ir al checkout directamente para completar la compra con solo ingresar el SKU ID.
 
 
-### `block-2` props
-
-| Prop name    | Type            | Description    | Default value                                                                                                                               |
-| ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | 
-| `XXXXX`      | `XXXXXX`       | XXXXXXXX         | `XXXXXX`        |
-
-Prop types are: 
-
-- `string` 
-- `enum` 
-- `number` 
-- `boolean` 
-- `object` 
-- `array` 
-
-When documenting a prop whose type is `object` or `array` another prop table will be needed. You can create it following the example below:
-
-- `propName` object:
-
-| Prop name    | Type            | Description    | Default value                                                                                                                               |
-| ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | 
-| `XXXXX`      | `XXXXXX`       | XXXXXXXX         | `XXXXXX`        |
+- ![image](https://user-images.githubusercontent.com/107804493/219127650-7e1f0c6e-16c3-4ebf-ab11-c911c216f475.png)
 
 
-Remember to also use this Configuration section to  **showcase any necessary disclaimer** related to the app and its blocks, such as the different behavior it may display during its configuration. 
-
-## Modus Operandi *(not mandatory)*
-
-There are scenarios in which an app can behave differently in a store, according to how it was added to the catalog, for example. It's crucial to go through these **behavioral changes** in this section, allowing users to fully understand the **practical application** of the app in their store.
-
-If you feel compelled to give further details about the app, such as it's **relationship with the VTEX admin**, don't hesitate to use this section. 
-
-## Customization
-
-The first thing that should be present in this section is the sentence below, showing users the recipe pertaining to CSS customization in apps:
-
-`In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).`
-
-Thereafter, you should add a single column table with the available CSS handles for the app, like the one below. Note that the Handles must be ordered alphabetically.
-
-| CSS Handles |
-| ----------- | 
-| `XXXXX` | 
-| `XXXXX` | 
-| `XXXXX` | 
-| `XXXXX` | 
-| `XXXXX` |
+## Configuración
+ ### Paso 1 - Configuración Básica 
+- verificar en el package.json en la carpeta raiz y en la carpeta react
+- name: debe tener el nombre del componente a usar
+- version: 0.01
+![image](https://user-images.githubusercontent.com/107804493/219128059-75ba3aa5-22f5-4ba3-8f6c-c8cf8981f204.png)
 
 
-If there are none, add the following sentence instead:
+### Paso 2 - Clonación del repositorio
+- Clona el repositorio a tu maquina local
+- ![image](https://user-images.githubusercontent.com/107804493/219094687-315319d2-86e4-4eb2-bd82-b0afe1f9930c.png)
 
-`No CSS Handles are available yet for the app customization.`
+### Paso 3 - Editar el Manifest.json 
+- Deberas editar el campo vendor que se refiere al  cliente que se este trabajando y en name el nombre del componente  custom
+- ![image](https://user-images.githubusercontent.com/107804493/219128153-f630742a-f072-4173-837d-2be540594b61.png)
 
-<!-- DOCS-IGNORE:start -->
 
-## Contributors ✨
+### Paso 4 - Instalar apps necesarias
+ Nos Ubicamos en la carpeta react
+```bash
+cd react
+```
+Se ejecuta yarn para que se instalen las dependencias necesarias para que react funcione correctamente
+```bash
+yarn
+```
 
-Thanks goes to these wonderful people:
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
+### Paso 5 - Desinstalar el store-theme predeterminado
+Al entrar por primera vez a la tienda, se tendra un store-theme inicial que debera ser desinstalado
+- Ejecutamos vtex list para ver las apps instaladas
+- identificamos  vtex.store-theme@0.0.1 y copiamos
+- Ejecutamos 
+```bash
+vtex unistall vtex.store-theme@0.0.1
+ ```
+### Paso 6 - Ejecute un preview de la tienda
+- Una vez ya hayas hecho login y hayas creado tu workspace para ejecutar tu tienda, deberas ejecutar vtex link en el workspace donde quieras usar tu componente custom
+```bash
+vtex link
+```
+Este permitira sincronizar los archivos de tu computadora con una direccion web que te permitira visualizar la pagina en el navegador.
+- Luego ejecutaras 
+```bash
+vtex browse
+```
+Este comando sirve para abrir el navegador en la url destinada para visualizar tu tienda
 
-<!-- DOCS-IGNORE:end -->
 
----- 
+### Dependencies
+- manifest.json
+![image](https://user-images.githubusercontent.com/107804493/219128266-9ac32d7b-8f04-4695-b126-08ba08ebd55d.png)
+- package.json en la carpeta raiz
+```bash
+"devDependencies": {
+    "@vtex/intl-equalizer": "^2.5.0",
+    "@vtex/prettier-config": "^0.3.5",
+    "eslint": "^7.14.0",
+    "eslint-config-vtex": "^12.8.11",
+    "eslint-config-vtex-react": "^6.8.3",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.2.0",
+    "typescript": "^3.9.6",
+    "@vtex/danger": "^0.2.7"
+  }
+```
+- package.json en la carpeta react
+```bash
+ "dependencies": {
+    "apollo-client": "^2.6.8",
+    "react": "^16.12.0",
+    "react-apollo": "^3.1.3",
+    "react-dom": "^16.12.0",
+    "react-intl": "^3.12.0"
+  },
+  "devDependencies": {
+    "@apollo/react-testing": "^3.1.3",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.8",
+    "@types/react": "^16.9.31",
+    "@vtex/test-tools": "^3.3.2",
+    "@vtex/tsconfig": "^0.4.4",
+    "apollo-cache-inmemory": "^1.6.5",
+    "graphql": "^14.6.0",
+    "typescript": "3.9.7"
+  }
+  ```
 
-Check out some documentation models that are already live: 
-- [Breadcrumb](https://github.com/vtex-apps/breadcrumb)
-- [Image](https://vtex.io/docs/components/general/vtex.store-components/image)
-- [Condition Layout](https://vtex.io/docs/components/all/vtex.condition-layout@1.1.6/)
-- [Add To Cart Button](https://vtex.io/docs/components/content-blocks/vtex.add-to-cart-button@0.9.0/)
-- [Store Form](https://vtex.io/docs/components/all/vtex.store-form@0.3.4/)
+
+
+### Contributors
+1. MAICOL ALEXIZ ORITZ HERNANDEZ
+2. Desde forma indirecta con sus consejos y recomendaciones, mis tutores Luis Felipe Cerero García, David Mosquera y Julio César Arroyave 
